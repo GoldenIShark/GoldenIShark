@@ -1,154 +1,220 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pindahkan Box</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
-            color: #333;
-        }
-        
-        .container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-        }
-        
-        h1 {
-            color: #2c3e50;
-            margin-top: 0;
-        }
-        
-        .box-container {
-            width: 100%;
-            height: 200px;
-            border: 2px dashed #3498db;
-            border-radius: 10px;
-            margin: 20px 0;
-            position: relative;
-            overflow: hidden;
-            background-color: #ecf0f1;
-        }
-        
-        #box {
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(45deg, #3498db, #2ecc71);
-            border-radius: 8px;
-            position: absolute;
-            left: 20px;
-            top: 70px;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-        
-        #move-button {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        #move-button:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        #move-button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .counter {
-            margin-top: 15px;
-            font-size: 18px;
-            color: #7f8c8d;
-        }
-        
-        .instructions {
-            margin-top: 25px;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            text-align: left;
-            font-size: 14px;
-        }
-        
-        .key {
-            display: inline-block;
-            padding: 2px 8px;
-            background-color: #e0e0e0;
-            border-radius: 4px;
-            font-family: monospace;
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Layout Premium Dark</title>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    body{
+      font-family:"Segoe UI",Arial,sans-serif;
+      background:#0e0e0e;
+      padding:20px;
+      display:flex;
+      justify-content:center;
+      color:#f1f1f1;
+    }
+
+    .wrapper{
+      width:100%;
+      max-width:900px;
+      border:4px solid #444;
+      padding:18px;
+      background:#1a1a1a;
+      color:#f1f1f1;
+    }
+
+    .box{
+      border:3px solid #444;
+      padding:22px;
+      margin-bottom:18px;
+      background:#1e1e1e;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#f1f1f1;
+    }
+
+    /* HEADER */
+    .header{
+      flex-direction:column;
+      gap:10px;
+    }
+    .header img{
+      width:100px;
+      height:100px;
+      border-radius:50%;
+      object-fit:cover;
+      border:3px solid #fff;
+    }
+    .nama{
+      font-size:18px;
+      font-weight:700;
+      color:#fff;
+    }
+
+    /* MENU STICKY */
+    .menu{
+      position:sticky;
+      top:0;
+      background:#1e1e1e;
+      z-index:10;
+      flex-direction:column;
+      gap:12px;
+      padding:16px;
+    }
+
+    /* LIST MENU */
+    .menu-list{
+      display:flex;
+      gap:20px;
+      list-style:none;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    /* TOMBOL */
+    .menu-list li{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      background:#2a2a2a;
+      padding:10px 18px;
+      border:2px solid #666;
+      border-radius:40px;
+      transition:0.25s ease;
+      cursor:pointer;
+      box-shadow:0 2px 3px rgba(0,0,0,0.5);
+    }
+
+    /* IKON */
+    .icon{
+      width:28px;
+      height:28px;
+      border-radius:50%;
+      background:#333;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+    }
+    .icon img{
+      width:22px;
+      height:22px;
+      filter:invert(1);
+    }
+
+    /* Hover Animasi */
+    .menu-list li:hover{
+      transform:scale(1.08);
+      box-shadow:0 4px 12px rgba(0,0,0,0.8);
+      border-color:#0099ff;
+      background:#333;
+    }
+
+    .menu-list a{
+      text-decoration:none;
+      color:#fff;
+      font-weight:600;
+      font-size:16px;
+    }
+
+    /* CONTENT LAYOUT */
+    .content{
+      display:flex;
+      gap:18px;
+    }
+    .left,.right{
+      border:3px solid #444;
+      padding:18px;
+      min-height:300px;
+      background:#1e1e1e;
+      color:#fff;
+    }
+    .left{width:30%;}
+    .right{width:70%;}
+
+    /* FOOTER */
+    .footer{
+      min-height:60px;
+      font-weight:600;
+      color:#fff;
+    }
+
+    /* RESPONSIF */
+    @media(max-width:700px){
+      .content{
+        flex-direction:column;
+      }
+      .left,.right{
+        width:100%;
+      }
+      .menu-list{
+        flex-direction:column;
+        gap:12px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Pindahkan Box</h1>
-        
-        <div class="box-container">
-            <div id="box">Box</div>
-        </div>
-        
-        <button id="move-button">Pindahkan ke Kanan (20px)</button>
-    </div>
 
-    <script>
-        // Mendapatkan elemen box dan tombol
-        const box = document.getElementById('box');
-        const moveButton = document.getElementById('move-button');
-        const positionDisplay = document.getElementById('position');
-        
-        // Variabel untuk menyimpan posisi box
-        let currentPosition = 20;
-        
-        // Fungsi untuk memindahkan box
-        function moveBox() {
-            // Batasi pergerakan agar tidak keluar dari container
-            if (currentPosition < 275) {
-                currentPosition += 5;
-                box.style.left = currentPosition + 'px';
-            } else {
-                
-            }
-        }
-        
-        // Event listener untuk tombol
-        moveButton.addEventListener('click', moveBox);
-        
-        // Event listener untuk keyboard (panah kanan)
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'ArrowRight') {
-                moveBox();
-            }
-        });
-    </script>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="box header">
+    <img src="foto.jpg" alt="Foto">
+    <div class="nama">NAMA</div>
+  </div>
+
+  <!-- MENU STICKY + IKON + BUTTON + ANIMASI -->
+  <div class="box menu">
+    <div style="font-size:18px;font-weight:700;margin-bottom:8px;color:#fff;">Menu Website</div>
+
+    <ul class="menu-list">
+
+      <li>
+        <div class="icon">
+          <img src="https://api.iconify.design/mdi/instagram.svg" alt="">
+        </div>
+        <a href="#">Instagram</a>
+      </li>
+
+      <li>
+        <div class="icon">
+          <img src="https://api.iconify.design/mdi/tiktok.svg" alt="">
+        </div>
+        <a href="#">TikTok</a>
+      </li>
+
+      <li>
+        <div class="icon">
+          <img src="https://api.iconify.design/mdi/github.svg" alt="">
+        </div>
+        <a href="#">GitHub</a>
+      </li>
+
+      <li>
+        <div class="icon">
+          <img src="https://api.iconify.design/mdi/whatsapp.svg" alt="">
+        </div>
+        <a href="#">WhatsApp</a>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <div class="left">Left Content</div>
+    <div class="right">Right Content</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="box footer">Footer</div>
+
+</div>
+
 </body>
-</html
+</html>
